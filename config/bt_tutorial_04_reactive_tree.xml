@@ -1,0 +1,26 @@
+<root main_tree_to_execute="MainTree">
+
+  <TreeNodesModel>
+    <Condition ID="BatteryOK" />
+
+    <Action ID="SaySomething">
+      <input_port name="message" />
+    </Action>
+
+    <Action ID="MoveBase">
+      <input_port name="goal" />
+    </Action>
+  </TreeNodesModel>
+
+  <BehaviorTree ID="MainTree">
+    <ReactiveSequence name="root_reactive_sequence">
+      <BatteryOK />
+      <Sequence name="mission_sequence">
+        <SaySomething message="Mission started..." />
+        <MoveBase goal="1;2;3" />
+        <SaySomething message="Mission completed!" />
+      </Sequence>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+</root>

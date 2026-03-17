@@ -1,0 +1,20 @@
+<root>
+    <BehaviorTree ID="DoorClosed">
+        <Fallback>
+            <Sequence>
+                <OpenDoor/>
+                <SetBlackboard output_key="result" value="OpenDoor: SUCCESS"/>
+            </Sequence>
+            <Sequence>
+                <RetryUntilSuccessful num_attempts="5">
+                    <PickLock/>
+                </RetryUntilSuccessful>
+                <SetBlackboard output_key="result" value="PickLock: SUCCESS"/>
+            </Sequence>
+            <Sequence>
+                <SmashDoor/>
+                <SetBlackboard output_key="result" value="SmashDoor: SUCCESS"/>
+            </Sequence>
+        </Fallback>
+    </BehaviorTree>
+</root>

@@ -1,0 +1,24 @@
+<root main_tree_to_execute="MainTree">
+    <include path="./bt_tutorial_05_subtree_doorclosed.xml"/>
+
+    <TreeNodesModel>
+        <Action ID="IsDoorClosed"/>
+        <Action ID="OpenDoor"/>
+        <Action ID="PassThroughDoor"/>
+        <Action ID="PickLock"/>
+        <Action ID="SmashDoor"/>
+    </TreeNodesModel>
+    
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <Fallback>
+                <Inverter>
+                    <IsDoorClosed/>
+                </Inverter>
+                <SubTree ID="DoorClosed"/>
+            </Fallback>
+            <PassThroughDoor/>
+        </Sequence>
+    </BehaviorTree>
+
+</root>
