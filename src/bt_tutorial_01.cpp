@@ -15,7 +15,6 @@ int main()
   factory.registerNodeType<ApproachObject>("ApproachObject");
 
   // Registering a SimpleActionNode using a function pointer.
-  // Here we prefer to use a lambda,but you can use std::bind too
   factory.registerSimpleCondition("CheckBattery", std::bind(CheckBattery));
 
   // You can also create SimpleActionNodes using methods of a class.
@@ -23,26 +22,21 @@ int main()
 
   factory.registerSimpleAction(
       "OpenGripper",
-      std::bind(&GripperInterface::open, &gripper));
+      std::bind(&GripperInterface::open, &gripper)
+  );
 
   factory.registerSimpleAction(
       "CloseGripper",
-      std::bind(&GripperInterface::close, &gripper));
+      std::bind(&GripperInterface::close, &gripper)
+  );
 
   // Launch Groot in background
   std::system((std::string(GROOT_CMD) + " --file " + bt_xml + " &").c_str());
 
-  // Trees are created at deployment-time (i.e. at run-time, but only 
-  // once at the beginning). 
-    
-  // IMPORTANT: when the object "tree" goes out of scope, all the 
-  // TreeNodes are destroyed
   auto tree = factory.createTreeFromFile(bt_xml);
 
   // To "execute" a Tree you need to "tick" it.
   // The tick is propagated to the children based on the logic of the tree.
-  // In this case, the entire sequence is executed, because all the children
-  // of the Sequence return SUCCESS.
   tree.tickRoot();
 
   return 0;
