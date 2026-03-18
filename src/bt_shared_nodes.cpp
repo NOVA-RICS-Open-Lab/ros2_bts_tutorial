@@ -1,7 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "bt_tutorial_02.hpp"
 #include "bt_tutorial_05.hpp"
-#include "bt_tutorial_05_solution.hpp"
 #include <chrono>
 #include <functional>
 #include <memory>
