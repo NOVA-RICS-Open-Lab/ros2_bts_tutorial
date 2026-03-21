@@ -1,19 +1,24 @@
 <root>
+
+    <TreeNodesModel>
+        <Action ID="OpenDoor"/>
+        <Action ID="PickLock"/>
+        <Action ID="SmashDoor"/>
+    </TreeNodesModel>
+
     <BehaviorTree ID="DoorClosed">
         <Fallback>
             <Sequence>
                 <OpenDoor/>
-                <SetBlackboard output_key="result" value="OpenDoor: SUCCESS"/>
             </Sequence>
             <Sequence>
+                <!-- TODO: Instead call the decode subtree and UseDoorCode node here-->
                 <RetryUntilSuccessful num_attempts="5">
                     <PickLock/>
                 </RetryUntilSuccessful>
-                <SetBlackboard output_key="result" value="PickLock: SUCCESS"/>
             </Sequence>
             <Sequence>
                 <SmashDoor/>
-                <SetBlackboard output_key="result" value="SmashDoor: SUCCESS"/>
             </Sequence>
         </Fallback>
     </BehaviorTree>

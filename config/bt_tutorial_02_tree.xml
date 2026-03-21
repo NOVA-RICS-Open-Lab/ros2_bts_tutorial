@@ -13,6 +13,8 @@
     <Sequence name="root_sequence">
       <SaySomething message="hello"/>
       <ThinkWhatToSay text="{the_answer}"/>
+      <!--TODO: Intercept the varialbe the_answer writing to the Blackboard-->
+      <!--SetBlackboard output_key=TODO value=TODO-->
       <SaySomething message="{the_answer}"/>
     </Sequence>
   </BehaviorTree>
