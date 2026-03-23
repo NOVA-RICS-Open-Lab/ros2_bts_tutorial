@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
   // We require 4 arguments for the program to execute, the executable name counts as 1 plus the 3 coordinates 
   if (argc != 4) {
-    std::cerr << "Usage: ros2 run ros2_bts_tutorial_solutions bt_tutorial_03 <x> <y> <z>" << std::endl;
+    std::cerr << "Usage: ros2 run ros2_bts_tutorial bt_tutorial_03 <x> <y> <z>" << std::endl;
     return 1;
   }
 
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
   // auto goal = std::make_shared<TODO>(TODO);
 
   // Define relative path to respective Behavior Tree .xml file
-  const std::string bt_xml = ament_index_cpp::get_package_share_directory("ros2_bts_tutorial_solutions") + "/config/bt_tutorial_03_tree.xml";
+  const std::string bt_xml = ament_index_cpp::get_package_share_directory("ros2_bts_tutorial") + "/config/bt_tutorial_03_tree.xml";
 
   // We use the BehaviorTreeFactory to register our custom nodes
   // The recommended way to create a Node is through inheritance

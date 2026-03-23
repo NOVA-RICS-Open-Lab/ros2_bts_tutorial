@@ -24,7 +24,7 @@ TODOs List:
 
 int main() {
   // Define relative path to respective Behavior Tree .xml file
-  const std::string bt_xml = ament_index_cpp::get_package_share_directory("ros2_bts_tutorial_solutions") + "/config/bt_tutorial_01_tree.xml";
+  const std::string bt_xml = ament_index_cpp::get_package_share_directory("ros2_bts_tutorial") + "/config/bt_tutorial_01_tree.xml";
 
   // We use the BehaviorTreeFactory to register our custom nodes
   // The recommended way to create a Node is through inheritance
